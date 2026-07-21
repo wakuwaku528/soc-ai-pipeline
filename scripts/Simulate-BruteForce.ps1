@@ -1,0 +1,1 @@
+1..5 | ForEach-Object { $sec = ConvertTo-SecureString "WrongPass123!" -AsPlainText -Force; $cred = New-Object System.Management.Automation.PSCredential("lab\bwayne", $sec); Start-Process powershell -Credential $cred -ArgumentList "-Command exit" -NoNewWindow 2>$null }

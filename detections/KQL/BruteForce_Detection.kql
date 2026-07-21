@@ -1,0 +1,5 @@
+SecurityEvent
+| where EventID == 4625
+| summarize FailureCount = count(), StartTime = min(TimeGenerated), EndTime = max(TimeGenerated) by TargetUserName, IpAddress, Computer
+| where FailureCount >= 5
+| extend AccountUPN = TargetUserName, ClientIP = IpAddress
